@@ -1,0 +1,8 @@
+prefetch -O . --option-file SRRaccession_List.txt
+#!/bin/bash
+for folder in SRR*/; do
+        cd "$folder"
+        prefix=$(basename "$folder")
+        fastq-dump --split-files -O . "$prefix".sra
+        cd ..
+done
